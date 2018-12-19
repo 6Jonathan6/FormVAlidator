@@ -30,6 +30,7 @@ export default {
     badInput() {
       this.$parent.$emit("badInput", this.mssg);
       this.$parent.$emit("input", this.input);
+      this.$emit("update", this.input);
     },
     validInput() {
       this.$emit("validInput", this.mssg);
@@ -40,8 +41,12 @@ export default {
   },
   render() {
     return this.$scopedSlots.default({
-      inputProps: { input: this.input },
-      inputEvents: { input: evt => (this.input = evt.target.value) }
+      inputProps: { value: this.input },
+      inputEvents: {
+        input: evt => {
+          this.input = evt.target.value;
+        }
+      }
     });
   }
 };

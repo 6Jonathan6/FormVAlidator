@@ -15,7 +15,6 @@ export default {
       let email = newInput.trim();
       email = email.replace(/\s/g, "");
       const regex = /.*@.*/g;
-      console.log(email);
       const isValid = !email.match(regex)
         ? false
         : email.match(regex)[0] === email;
